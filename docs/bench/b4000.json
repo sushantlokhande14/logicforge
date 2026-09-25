@@ -1,0 +1,82 @@
+{
+  "design": "/build/bench/b4000.sv",
+  "reps": 7,
+  "before": {
+    "gates": 1689384,
+    "area": 2911862,
+    "and": 683113,
+    "or": 259204,
+    "xor": 599059,
+    "not": 90552,
+    "mux": 57456,
+    "depth": 42,
+    "flops": 6848,
+    "inputs": 68002,
+    "outputs": 36000
+  },
+  "after": {
+    "gates": 335806,
+    "area": 583801,
+    "and": 103623,
+    "or": 30337,
+    "xor": 119087,
+    "not": 51899,
+    "mux": 30860,
+    "depth": 33,
+    "flops": 6848,
+    "inputs": 68002,
+    "outputs": 36000
+  },
+  "regions": 11704,
+  "rows": [
+    {
+      "threads": 1,
+      "total_ms": 561.149,
+      "optimize_ms": 368.194,
+      "speedup": 1.0,
+      "optimize_speedup": 1.0
+    },
+    {
+      "threads": 2,
+      "total_ms": 438.178,
+      "optimize_ms": 243.339,
+      "speedup": 1.2806416570434846,
+      "optimize_speedup": 1.5130907910363731
+    },
+    {
+      "threads": 4,
+      "total_ms": 372.253,
+      "optimize_ms": 174.789,
+      "speedup": 1.5074398325869771,
+      "optimize_speedup": 2.1065055581300887
+    },
+    {
+      "threads": 8,
+      "total_ms": 340.141,
+      "optimize_ms": 141.765,
+      "speedup": 1.6497540725757847,
+      "optimize_speedup": 2.5972136987267667
+    },
+    {
+      "threads": 12,
+      "total_ms": 338.727,
+      "optimize_ms": 127.053,
+      "speedup": 1.6566408936990558,
+      "optimize_speedup": 2.8979559711301586
+    },
+    {
+      "threads": 16,
+      "total_ms": 312.961,
+      "optimize_ms": 113.709,
+      "speedup": 1.7930317196072354,
+      "optimize_speedup": 3.23803744646422
+    },
+    {
+      "threads": 22,
+      "total_ms": 325.673,
+      "optimize_ms": 116.993,
+      "speedup": 1.723044280612762,
+      "optimize_speedup": 3.147145555717009
+    }
+  ]
+}
