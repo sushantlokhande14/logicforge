@@ -1,0 +1,25 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "release",
+      "binaryDir": "build/release",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Release" }
+    },
+    {
+      "name": "debug",
+      "binaryDir": "build/debug",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "asan",
+      "binaryDir": "build/asan",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug", "LF_SANITIZE": "address,undefined" }
+    },
+    {
+      "name": "tsan",
+      "binaryDir": "build/tsan",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "RelWithDebInfo", "LF_SANITIZE": "thread" }
+    }
+  ]
+}

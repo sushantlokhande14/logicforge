@@ -1,0 +1,12 @@
+adder.sv gates=26 area=50 depth=8 flops=0
+alu.sv gates=103 area=149 depth=16 flops=0
+cmp.sv gates=44 area=37 depth=8 flops=0
+counter.sv gates=22 area=43 depth=6 flops=4
+gray.sv gates=5 area=15 depth=1 flops=0
+mac.sv gates=151 area=267 depth=17 flops=0
+mux4.sv gates=14 area=30 depth=4 flops=0
+parity.sv gates=46 area=75 depth=4 flops=0
+prio.sv gates=20 area=16 depth=6 flops=0
+redundant.sv gates=4 area=12 depth=1 flops=0
+shifts.sv gates=9 area=14 depth=1 flops=0
+traffic.sv gates=32 area=32 depth=7 flops=5
