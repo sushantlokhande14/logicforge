@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        preset: [release, asan, tsan]
+    steps:
+      - uses: actions/checkout@v4
+      # newer kernels randomize mmap more than TSan's shadow layout allows
+      - if: matrix.preset == 'tsan'
+        run: sudo sysctl vm.mmap_rnd_bits=28
+      - run: cmake --preset ${{ matrix.preset }}
+      - run: cmake --build build/${{ matrix.preset }} -j
+      - run: ctest --test-dir build/${{ matrix.preset }} --output-on-failure
+
+  bench-smoke:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: cmake --preset release && cmake --build build/release -j
+      - run: python3 tools/gen_bench.py --blocks 300 > bench.sv
+      - run: ./build/release/lfc bench.sv -j4 --stats --profile --verify
+      - run: python3 tools/bench.py --lfc build/release/lfc --design bench.sv --threads 1,2,4 --reps 3
