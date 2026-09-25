@@ -30,6 +30,8 @@ const char* kUsage = R"(usage: lfc [options] <file.sv>...
   --no-balance        skip depth balancing
   --no-sweep          skip functional sweeping
   --sweep-support K   max inputs for an exact sweep check (default 10)
+  --skip P1,P2        leave passes out (constprop, simplify, strash, dce,
+                      balance, sweep), handy for finding which one broke something
   -o FILE             write the optimized netlist as Verilog
   --dot FILE          write the optimized graph as graphviz
   --dump-ir           print the optimized IR
@@ -67,6 +69,10 @@ Args parse_args(int argc, char** argv) {
     else if (s == "--no-balance") a.flow.passes.balance = false;
     else if (s == "--no-sweep") a.flow.passes.sweep = false;
     else if (s == "--sweep-support") a.flow.passes.sweep_support = std::atoi(next().c_str());
+    else if (s == "--skip") {
+      std::stringstream ss(next());
+      for (std::string p; std::getline(ss, p, ',');) a.flow.passes.skip.push_back(p);
+    }
     else if (s == "-o") a.out = next();
     else if (s == "--dot") a.dot = next();
     else if (s == "--dump-ir") a.dump = true;

@@ -83,5 +83,6 @@ Qor measure(const Graph& g);
 void verify(const Graph& g);
 
 std::string dump(const Graph& g);
+void debug_print(const Graph& g);  // dump() to stderr; meant for `call lf::debug_print(g)` in gdb
 
 }  // namespace lf

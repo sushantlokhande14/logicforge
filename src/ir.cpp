@@ -1,6 +1,7 @@
 #include "ir.h"
 
 #include <algorithm>
+#include <cstdio>
 #include <sstream>
 #include <stdexcept>
 
@@ -135,5 +136,7 @@ std::string dump(const Graph& g) {
   for (const auto& o : g.outputs) os << "  " << o.name << "[" << o.bit << "] <- n" << o.node << "\n";
   return os.str();
 }
+
+void debug_print(const Graph& g) { std::fputs(dump(g).c_str(), stderr); }
 
 }  // namespace lf

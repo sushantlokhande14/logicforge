@@ -344,6 +344,7 @@ void optimize(Graph& g, const PassOptions& o, std::vector<PassLog>* log) {
     return c;
   };
   auto run = [&](const char* name, auto&& fn) {
+    if (std::find(o.skip.begin(), o.skip.end(), name) != o.skip.end()) return;
     auto t0 = std::chrono::steady_clock::now();
     long before = gates();
     fn();

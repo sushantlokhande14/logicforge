@@ -24,6 +24,7 @@ struct PassOptions {
   int sweep_support = 10;
   int max_iters = 4;
   bool verify_each = false;
+  std::vector<std::string> skip;  // pass names to leave out, for bisecting a bad pass
 };
 
 struct PassLog {
